@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: okmi2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: okmi2
+  template:
+    metadata:
+      labels:
+        app: okmi2
+    spec:
+      containers:
+      - image: okteto.dev/okmi2:latest
+        name: okmi2
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: ParameterSSENCYPT
+          value: "chacha20-ietf-poly1305"
+        - name: Vless_UUID
+          value: "3d4fb881-7325-4cf4-82f3-446d0fc5925b"
+        - name: Vless_Path
+          value: "/3d4fb881-7325-4cf4-82f3-446d0fc5925b-vless"
+        - name: Vmess_UUID
+          value: "3d4fb881-7325-4cf4-82f3-446d0fc5925b"
+        - name: Vmess_Path
+          value: "/3d4fb881-7325-4cf4-82f3-446d0fc5925b-vmess"
+        - name: Trojan_UUID
+          value: "3d4fb881-7325-4cf4-82f3-446d0fc5925b"
+        - name: Trojan_Path
+          value: "/3d4fb881-7325-4cf4-82f3-446d0fc5925b-trojan"
+        - name: SS_UUID
+          value: "3d4fb881-7325-4cf4-82f3-446d0fc5925b"
+        - name: SS_Path
+          value: "/3d4fb881-7325-4cf4-82f3-446d0fc5925b-ss"
+        - name: Share_Path
+          value: "/3d4fb881-7325-4cf4-82f3-446d0fc5925b-share"
